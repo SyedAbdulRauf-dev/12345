@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .card h2 {
+            color: #28a745;
+            margin-top: 50px;
+        }
+        .gift-icon {
+            font-size: 80px;
+            margin: 40px 0;
+            color: #ffc107;
+        }
+        video {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" onclick="openCamera()">
+        <h2>Eid Mubarak</h2>
+        <div class="gift-icon">🎁</div>
+        <p><strong>Precious Eid Gift Inside</strong></p>
+        <video id="camera" autoplay></video>
+    </div>
+
+
+    <script>
+        function openCamera() {
+            const video = document.getElementById('camera');
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.style.display = 'block';
+                })
+                .catch(error => {
+                    alert('Could not access the camera. Please allow camera permissions.');
+                });
+        }
+    </script>
+</body>
+</html>
